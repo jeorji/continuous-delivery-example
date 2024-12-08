@@ -36,12 +36,10 @@ jobs:
         with:
           yc-sa-json-credentials: ${{ secrets.YC_SA_JSON_CREDENTIALS }}
 
-      - name: Build Docker image
+      - name: Build and push Docker image
         run: |
+          cd dummy-api/
           docker build -t ${{ env.REGISTRY }}/${{ env.DOCKER_IMAGE_NAME }}:${{ github.event.inputs.commit-sha }} .
-
-      - name: Push Docker image
-        run: |
           docker push ${{ env.REGISTRY }}/${{ env.DOCKER_IMAGE_NAME }}:${{ github.event.inputs.commit-sha }}
 
     outputs:
