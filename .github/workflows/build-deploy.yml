@@ -60,7 +60,7 @@ jobs:
         uses: actions/checkout@v3
         with:
           fetch-depth: 1
-          paths: .github/workflows/servers.json
+          path: .github/workflows/servers.json
 
       - name: Load server IP from JSON
         id: load_server_ip
